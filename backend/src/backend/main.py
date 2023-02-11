@@ -35,10 +35,10 @@ def query_data(bdg_code: str):
         q = q.where(strftime("%Y", sql_datetime(samples.timestamp, "unixepoch")) == request.args["year"])
 
     if "month" in request.args:
-        q = q.where(strftime("%m", sql_datetime(samples.timestamp, "unixepoch")) == request.args["month"])
+        q = q.where(strftime("%m", sql_datetime(samples.timestamp, "unixepoch")) == request.args["month"].zfill(2))
 
     if "day" in request.args:
-        q = q.where(strftime("%d", sql_datetime(samples.timestamp, "unixepoch")) == request.args["day"])
+        q = q.where(strftime("%d", sql_datetime(samples.timestamp, "unixepoch")) == request.args["day"].zfill(2))
     
     q = q.select("timestamp")
 
