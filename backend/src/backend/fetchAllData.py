@@ -35,8 +35,8 @@ def fetchBuildingData(building: str, type: StatisticType = StatisticType.AVERAGE
         "action": "fetch",
         "series": building,
         "format": "csv",
-        "type": type,
-        "resolution": resolution,
+        "type": str(type),
+        "resolution": str(resolution),
         "startTime": 0
     })
     url = f"https://data.southampton.ac.uk/time-series?{parameters}"
