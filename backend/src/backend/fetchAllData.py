@@ -1,15 +1,15 @@
 import requests
 import re
 from urllib.parse import urlencode
-from enum import Enum
+from enum import IntEnum, StrEnum
 
 
-class DataResolution(Enum):
+class DataResolution(IntEnum):
     HOURLY = 3600
     DAILY = 86400
 
 
-class StatisticType(Enum):
+class StatisticType(StrEnum):
     MINIMUM = "min"
     MAXIMUM = "max"
     AVERAGE = "average"
