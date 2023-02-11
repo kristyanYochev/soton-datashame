@@ -6,10 +6,11 @@ from sqlite3 import Connection
 def populate_database(database: str):
     """Populates the database with data from all the buildings"""
     with DatabaseConnection(database) as db_conn:
-        verify_db_schema(db_conn)
+        create_db_schema(db_conn)
 
 
-def verify_db_schema(connection: Connection):
+def create_db_schema(connection: Connection):
+    """Creates the db schema if not already present"""
     with connection:
         connection.execute("""
             CREATE TABLE IF NOT EXISTS samples (
