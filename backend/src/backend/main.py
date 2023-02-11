@@ -1,9 +1,11 @@
 from flask import Flask
+from flask_cors import CORS
 from database import DatabaseConnection
 from pypika import Query
 import json
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/buildings")
 def list_buildings():
