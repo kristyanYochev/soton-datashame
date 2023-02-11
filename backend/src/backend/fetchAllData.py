@@ -1,6 +1,6 @@
 import requests
 import re
-import csv
+
 
 '''Returns all building codes from the energy-time-series-map.ttl file'''
 
@@ -36,15 +36,17 @@ def writeDataToFile(data: str, filename: str) -> None:
         f.write(data)
 
 
-def dumpAllAvgData():
+def dumpAllData(type: str = "average", resolution=3600):
     for building in fetchAllBuildings():
-        writeDataToFile(fetchBuildingData(building),
-                        building.replace('/', '-') + "_avg.csv")
+        writeDataToFile(fetchBuildingData(building, type, resolution),
+                        "./soton-datashame/backend/src/backend/data/" + building.replace('/', '-') + "-" + type + ".csv")
         print("Fetched " + building)
 
 
 def main():
-    dumpAllAvgData()
+    dumpAllData("average")
+    dumpAllData("min")
+    dumpAllData("max")
 
 
 if __name__ == "__main__":
