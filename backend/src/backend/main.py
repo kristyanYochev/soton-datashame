@@ -17,5 +17,3 @@ def list_buildings():
 
 if __name__ == "__main__":
     app.run(port=8080)
-
-# \elec\/b(.*)\/ekw\
