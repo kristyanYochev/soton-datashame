@@ -60,14 +60,31 @@ Example URL: <https://data.southampton.ac.uk/time-series?action=fetch&series=ele
 The series of data to fetch. The series is a combination of the type of data and the building.
 Find the list of buildings here: <https://data.southampton.ac.uk/time-series>
 The old data uses the format ```elec/b59/ekw``` where ```b59``` is the building code and ```ekw``` is the type of data.
-The new data uses the format ```wsavail/36-lvl04```
-The 
-We have found that the majority of buidlings have data up to the very end of 2020. Some buildings then have room data up to the present day. These rooms seem to be computer rooms
+The new data uses the format ```wsavail/36-lvl04/units``` where units may be ```units``` or ```ratio```.
+The
+We have found that the majority of buidlings have data up to the very end of 2020. Some buildings then have room data up to the present day. These rooms seem to be computer rooms. Not all data is reliable.
+
+May be better if we restrict the data to data published before 2021/2020
 
 ### format
 
 * html
 * csv
 * json
-* jsonp
-* 
+  
+### type
+
+* min
+* max
+* average
+
+### resolution
+
+Only two identified resolutions so far, but can interpolate between them.
+
+* 3600 - This is for hourly data
+* 86400 - This is for daily data
+
+### startTime
+
+Fairly self explanatory. The start time of the data to fetch. This is in epoch time.
