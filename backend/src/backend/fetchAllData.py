@@ -1,5 +1,16 @@
 import requests
 import re
+from enum import Enum
+
+class DataResolution(Enum):
+    HOURLY = 3600
+    DAILY = 86400
+
+
+class StatisticType(Enum):
+    MINIMUM = "min"
+    MAXIMUM = "max"
+    AVERAGE = "average"
 
 
 def fetchAllBuildings():
@@ -12,7 +23,7 @@ def fetchAllBuildings():
     return buildings
 
 
-def fetchBuildingData(building: str, type: str = "average", resolution=3600) -> str:
+def fetchBuildingData(building: str, type: StatisticType = StatisticType.AVERAGE, resolution: DataResolution = DataResolution.HOURLY) -> str:
     '''
     Returns all energy data for a given building
     :param building: building code
@@ -31,7 +42,10 @@ def writeDataToFile(data: str, filename: str):
         f.write(data)
 
 
-def dumpAllData(type: str = "average", resolution=3600):
+def dumpAllData(type: StatisticType = StatisticType.AVERAGE, resolution: DataResolution = DataResolution.HOURLY):
+    '''
+    Dumps all data
+    '''
     for building in fetchAllBuildings():
         writeDataToFile(fetchBuildingData(building, type, resolution),
                         "./soton-datashame/backend/src/backend/data/" + building.replace('/', '-') + "-" + type + ".csv")
