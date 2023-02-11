@@ -27,7 +27,7 @@ def fetchBuildingData(building: str, type: StatisticType = StatisticType.AVERAGE
     '''
     Returns all energy data for a given building
     :param building: building code
-    :param resolution: 3600 for hourly data, 86400 for daily data
+    :param resolution: The sample frequency of the data
     '''
     url = 'https://data.southampton.ac.uk/time-series?action=fetch&series=' + \
         building + '&format=csv&type=' + type + '&resolution=' + \
