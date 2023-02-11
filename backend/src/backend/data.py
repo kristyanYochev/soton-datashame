@@ -14,9 +14,11 @@ def populate_database(database: str):
 
         buildings = fetch_all_buildings()
         for building in buildings:
+            print(f"Fetching minimums for {building}")
             building_min_csv = fetch_building_data(building, StatisticType.MINIMUM)
             parsed = parse_csv(building_min_csv)
             formatted = format_for_inserton(parsed)
+            print(f"Inserting minimums for {building} into db")
             with db_conn:
                 db_conn.executemany("""
                     INSERT OR IGNORE INTO samples(building_code, timestamp) VALUES (:building, :timestamp);
@@ -24,10 +26,12 @@ def populate_database(database: str):
                 db_conn.executemany("""
                     UPDATE samples SET min = :sample WHERE building_code = :building AND timestamp = :timestamp;
                 """, formatted)
-            
+
+            print(f"Fetching averages for {building}")
             building_avg_csv = fetch_building_data(building, StatisticType.AVERAGE)
             parsed = parse_csv(building_avg_csv)
             formatted = format_for_inserton(parsed)
+            print(f"Inserting averages for {building} into db")
             with db_conn:
                 db_conn.executemany("""
                     INSERT OR IGNORE INTO samples(building_code, timestamp) VALUES (:building, :timestamp);
@@ -36,9 +40,11 @@ def populate_database(database: str):
                     UPDATE samples SET average = :sample WHERE building_code = :building AND timestamp = :timestamp;
                 """, formatted)
 
+            print(f"Fetching maximums for {building}")
             building_max_csv = fetch_building_data(building, StatisticType.MAXIMUM)
             parsed = parse_csv(building_max_csv)
             formatted = format_for_inserton(parsed)
+            print(f"Inserting maximums for {building} into db")
             with db_conn:
                 db_conn.executemany("""
                     INSERT OR IGNORE INTO samples(building_code, timestamp) VALUES (:building, :timestamp);
