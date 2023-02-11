@@ -1,6 +1,6 @@
 import requests
 import re
-import urllib.parse
+from urllib.parse import urlencode
 from enum import Enum
 
 
@@ -31,7 +31,7 @@ def fetchBuildingData(building: str, type: StatisticType = StatisticType.AVERAGE
     -------
     CSV-formatted string with the `building`'s energy consumption data
     """
-    parameters = urllib.parse.urlencode({
+    parameters = urlencode({
         "action": "fetch",
         "series": building,
         "format": "csv",
