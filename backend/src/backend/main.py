@@ -41,7 +41,7 @@ def query_data(bdg_code: str):
 
     if "day" in request.args:
         q = q.where(strftime("%d", sql_datetime(samples.timestamp, "unixepoch")) == request.args["day"].zfill(2))
-    
+
     q = q.select("timestamp")
 
     with DatabaseConnection("test.db") as db:
@@ -54,6 +54,30 @@ def query_data(bdg_code: str):
 
         data = list(cur)
         return json.dumps(data)
+
+
+@app.route("/headline-stats")
+def headline_stats():
+    with DatabaseConnection("test.db") as db_conn:
+        cur = db_conn.cursor()
+
+        cur.execute("SELECT SUM(average) FROM samples WHERE strftime('%Y', datetime(timestamp, 'unixepoch')) = '2020'")
+        power_consumption_2020, = next(cur)
+
+        cur.execute("SELECT SUM(average) FROM samples WHERE strftime('%Y', datetime(timestamp, 'unixepoch')) = '2019'")
+        power_consumption_2019, = next(cur)
+
+        cur.execute("SELECT building_code, SUM(average) FROM samples WHERE strftime('%Y', datetime(timestamp, 'unixepoch')) = '2020' GROUP BY 1 ORDER BY 2 DESC LIMIT 1")
+        most_consuming_building, building_consumption = next(cur)
+
+        return json.dumps({
+            "power_consumption_2019": power_consumption_2019,
+            "power_consumption_2020": power_consumption_2020,
+            "most_consuming_building": {
+                "building_code": most_consuming_building,
+                "consumption": building_consumption
+            }
+        })
 
 
 if __name__ == "__main__":
