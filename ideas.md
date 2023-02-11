@@ -82,9 +82,15 @@ May be better if we restrict the data to data published before 2021/2020
 
 Only two identified resolutions so far, but can interpolate between them.
 
-* 3600 - This is for hourly data
-* 86400 - This is for daily data
+* ```3600``` - This is for hourly data
+* ```86400``` - This is for daily data
 
 ### startTime
 
 Fairly self explanatory. The start time of the data to fetch. This is in epoch time.
+
+## Data Analysis Stuff
+
+Can compare against the wind and solar data for the UK for the same time period.
+
+Next, FT analysis
