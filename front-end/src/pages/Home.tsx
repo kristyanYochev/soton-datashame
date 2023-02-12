@@ -1,10 +1,8 @@
-import React, { FC } from "react";
+import React from "react";
 
 import '../styles/Home.css';
 
-
-
-const Home: FC = () => {
+const Home: React.FC = () => {
   return <div className="hero">
       <div className="title-section">
         <h1 className="title">Soton Shame</h1>
