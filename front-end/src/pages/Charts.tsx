@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import '../styles/Charts.css'
 import { Pages } from "../utils/enums";
 import { SharedProps } from "../utils/props";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+// import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
  
 const Charts: FC<SharedProps> = ({setPage}) => {
 
@@ -84,7 +84,7 @@ const Charts: FC<SharedProps> = ({setPage}) => {
                             return <button key={index.toString()} className={"btn"} onClick={async () => {setSelect(-1); const data = await fetchRoute(`http://localhost:8080/buildings/${building}?stat_type=average`); setBuildingData(data);}} >{"Building " + building.split('/')[1].slice(1).toUpperCase()}</button>
                           })}
                       </div>)}
-      {select === -1 && (<div className="wrapper">
+      {/* {select === -1 && (<div className="wrapper">
                             <LineChart width={800} height={600} data={convertBuildingData()}>
                               <CartesianGrid strokeDasharray="3 3" />
                               <XAxis dataKey="date"/>
@@ -93,7 +93,7 @@ const Charts: FC<SharedProps> = ({setPage}) => {
                               <Legend/>
                               <Line type="monotone" dataKey="kwh" stroke="#8884d8" />
                             </LineChart>
-                      </div>)}
+                      </div>)} */}
       
     </div>
   </div>
