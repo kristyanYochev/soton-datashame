@@ -27,7 +27,7 @@ async function fetchChartData(building_code: string): Promise<SampleData> {
 }
 
 const DataVisualisation: React.FC = () => {
-    const [selected, setSelected] = useState<string>("");
+    const [selected, setSelected] = useState<string>('');
     const [buildings, setBuildings] = useState<string[]>([]);
     const [data, setData] = useState<SampleData>();
 
@@ -46,6 +46,7 @@ const DataVisualisation: React.FC = () => {
         const init = async () => {
             const buildingsList = await callApi('/buildings');
             setBuildings(buildingsList);
+            setSelected('elec/b1/ekw');
         };
 
         init().catch(console.error);
