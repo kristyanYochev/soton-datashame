@@ -33,24 +33,27 @@ const Headline: React.FC = () => {
         <>
             {!headline && <h1>Loading...</h1>}
             {headline && (
-                <>
-                    <div className="section section-1">
+                <div className="cols-2-md">
+                    <div className="card">
                         <h1 className="title">Energy Consumption 2020 (KWH)</h1>
                         <div className="content">
-                            {headline.power_consumption_2020}KWH (
-                            {(headline.power_consumption_2020 -
-                                headline.power_consumption_2019) /
-                                headline.power_consumption_2019}
-                            )
+                            {headline.power_consumption_2020.toFixed(0)} kWh (
+                            {(
+                                ((headline.power_consumption_2020 -
+                                    headline.power_consumption_2019) *
+                                    100) /
+                                headline.power_consumption_2019
+                            ).toFixed(2)}
+                            % )
                         </div>
                     </div>
-                    <div className="section section-2">
+                    <div className="card">
                         <h1 className="title">Energy Consumption 2019 (KWH)</h1>
                         <div className="content">
                             {headline.power_consumption_2019}KWH
                         </div>
                     </div>
-                    <div className="section section-3">
+                    <div className="card">
                         <h1 className="title">
                             Biggest Energy Consumer 2020 (KWH)
                         </h1>
@@ -65,14 +68,14 @@ const Headline: React.FC = () => {
                             (59%)
                         </div>
                     </div>
-                    <div className="section section-4">
+                    <div className="card">
                         <h1 className="title">
                             Biggest Energy Consumer 2021 (KWH)
                         </h1>
                         <h2 className="subtitle">Building 59</h2>
                         <div className="content">2500K5WH (+15%)</div>
                     </div>
-                </>
+                </div>
             )}
         </>
     );

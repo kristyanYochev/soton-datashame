@@ -72,9 +72,7 @@ const Charts: React.FC = () => {
                     })}
                 </div>
             </div>
-            <div className="wrapper">
-                <Outlet />
-            </div>
+            <Outlet />
             {/* <div className="data">
                 {select === 0 && headline !== null && (
                     <div className="wrapper"></div>
