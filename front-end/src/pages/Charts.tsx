@@ -1,8 +1,7 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import '../styles/Charts.css'
-// import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
  
-const Charts: FC = () => {
+const Charts: React.FC = () => {
 
   const [select, setSelect] = useState<number>(0);
   const [buildings, setBuildings] = useState<string[]>([]);
@@ -11,7 +10,6 @@ const Charts: FC = () => {
 
   useEffect(() => {
     fetchRoute('http://localhost:8080/headline-stats').then(objs => {  console.log(objs); return setHeadline(objs);});
-   
   }, []);
 
   const buttons = [{
@@ -36,11 +34,6 @@ const Charts: FC = () => {
     const response = await fetch(route, {mode: 'cors'});
     const data = await response.json();
     return data;
-  }
-
-  function convertBuildingData() {
-    const converted = buildingData.map((dataPoint) => {return {date: new Date(dataPoint.timestamp), kwh: dataPoint.value}});
-    return converted;
   }
 
   return <div className="charts">
