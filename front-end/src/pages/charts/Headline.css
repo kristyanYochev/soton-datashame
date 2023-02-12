@@ -1,0 +1,36 @@
+.card {
+    border-radius: 1rem;
+    -webkit-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.45);
+    -moz-box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.45);
+    box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.45);
+
+    padding: 3rem;
+}
+
+.card .title {
+    margin-bottom: 0.5em;
+    font-weight: initial;
+}
+
+.cols-2-md {
+    margin: 1rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+    max-width: 1440px;
+}
+
+.emphasis {
+    font-weight: bold;
+}
+
+.sub-title {
+    font-weight: bold;
+}
+
+@media screen and (min-width: 870px) {
+    .cols-2-md {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
