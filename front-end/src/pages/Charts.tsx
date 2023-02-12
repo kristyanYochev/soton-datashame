@@ -1,10 +1,8 @@
 import React, { FC, useState, useEffect } from "react";
 import '../styles/Charts.css'
-import { Pages } from "../utils/enums";
-import { SharedProps } from "../utils/props";
 // import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
  
-const Charts: FC<SharedProps> = ({setPage}) => {
+const Charts: FC = () => {
 
   const [select, setSelect] = useState<number>(0);
   const [buildings, setBuildings] = useState<string[]>([]);
@@ -48,7 +46,7 @@ const Charts: FC<SharedProps> = ({setPage}) => {
   return <div className="charts">
     <div className="header">
       <h1 className="title">Data</h1>
-      <button onClick={() => {setPage(Pages.Home)}} className="back">Go Back</button>
+      <a href="/" className="back">Home</a>
     </div>
     <div className="options">
       <div className="content">

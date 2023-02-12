@@ -7,10 +7,10 @@ import { createBrowserRouter } from 'react-router-dom';
 export default createBrowserRouter([
     {
         path: "/",
-        element: <Home setPage={() => {}} />
+        element: <Home />
     },
     {
         path: "/charts",
-        element: <Charts setPage={() => {}} />
+        element: <Charts />
     }
 ]);
