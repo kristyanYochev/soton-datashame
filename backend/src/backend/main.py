@@ -3,14 +3,16 @@ from flask_cors import CORS
 from database import DatabaseConnection
 from pypika import Query, Table, CustomFunction
 import json
+import datetime
 
 app = Flask(__name__)
 CORS(app)
 
+
 @app.route("/buildings")
 def list_buildings():
     with DatabaseConnection("test.db") as db:
-        cur = db.cursor();
+        cur = db.cursor()
 
         result = cur.execute("SELECT DISTINCT building_code FROM samples")
         buildings = [bdg_code for bdg_code, in result]
@@ -34,18 +36,22 @@ def query_data(bdg_code: str):
             return "Invalid stat_type", 400
 
     if "year" in request.args:
-        q = q.where(strftime("%Y", sql_datetime(samples.timestamp, "unixepoch")) == request.args["year"])
+        q = q.where(strftime("%Y", sql_datetime(
+            samples.timestamp, "unixepoch")) == request.args["year"])
 
     if "month" in request.args:
-        q = q.where(strftime("%m", sql_datetime(samples.timestamp, "unixepoch")) == request.args["month"].zfill(2))
+        q = q.where(strftime("%m", sql_datetime(samples.timestamp,
+                    "unixepoch")) == request.args["month"].zfill(2))
 
     if "day" in request.args:
-        q = q.where(strftime("%d", sql_datetime(samples.timestamp, "unixepoch")) == request.args["day"].zfill(2))
+        q = q.where(strftime("%d", sql_datetime(samples.timestamp,
+                    "unixepoch")) == request.args["day"].zfill(2))
 
     q = q.select("timestamp")
 
     with DatabaseConnection("test.db") as db:
-        db.row_factory = lambda _, row: {"value": row[0], "timestamp": row[1]}
+        db.row_factory = lambda _, row: {"value": row[0], "timestamp": datetime.datetime.fromtimestamp(
+            row[1]).strftime("%Y-%m-%d %H-%M-%S")}
         cur = db.cursor()
 
         print(str(q))
@@ -53,7 +59,7 @@ def query_data(bdg_code: str):
         cur.execute(str(q))
 
         data = list(cur)
-        return json.dumps(data)
+        return json.dumps(data[::23])
 
 
 @app.route("/headline-stats")
@@ -61,10 +67,12 @@ def headline_stats():
     with DatabaseConnection("test.db") as db_conn:
         cur = db_conn.cursor()
 
-        cur.execute("SELECT SUM(average) FROM samples WHERE strftime('%Y', datetime(timestamp, 'unixepoch')) = '2020'")
+        cur.execute(
+            "SELECT SUM(average) FROM samples WHERE strftime('%Y', datetime(timestamp, 'unixepoch')) = '2020'")
         power_consumption_2020, = next(cur)
 
-        cur.execute("SELECT SUM(average) FROM samples WHERE strftime('%Y', datetime(timestamp, 'unixepoch')) = '2019'")
+        cur.execute(
+            "SELECT SUM(average) FROM samples WHERE strftime('%Y', datetime(timestamp, 'unixepoch')) = '2019'")
         power_consumption_2019, = next(cur)
 
         cur.execute("SELECT building_code, SUM(average) FROM samples WHERE strftime('%Y', datetime(timestamp, 'unixepoch')) = '2020' GROUP BY 1 ORDER BY 2 DESC LIMIT 1")
