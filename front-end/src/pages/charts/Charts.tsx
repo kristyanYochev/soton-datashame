@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import React from 'react';
+import DataVisualisation from './Chart';
 import './Charts.css';
 import Headline from './Headline';
 
@@ -13,6 +13,7 @@ const Charts: React.FC = () => {
                 </a>
             </div>
             <Headline />
+            <DataVisualisation />
         </div>
     );
 };
