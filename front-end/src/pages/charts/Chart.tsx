@@ -27,20 +27,45 @@ async function fetchChartData(building_code: string): Promise<SampleData> {
 }
 
 const DataVisualisation: React.FC = () => {
+    const [selected, setSelected] = useState<string>("");
+    const [buildings, setBuildings] = useState<string[]>([]);
     const [data, setData] = useState<SampleData>();
+
+    async function getBuildingData() {
+
+        const chartData = await fetchChartData(selected);
+        setData(chartData);
+    }
+
+    async function changeBuilding(event:any) {
+        console.log(event.target.value);
+        setSelected(event.target.value);
+    }
 
     useEffect(() => {
         const init = async () => {
-            const chartData = await fetchChartData('elec/b16/ekw');
-            setData(chartData);
-            console.log('Should have finishe dloading chart');
+            const buildingsList = await callApi('/buildings');
+            setBuildings(buildingsList);
         };
 
         init().catch(console.error);
     }, []);
 
+    useEffect(() => {
+        console.log(selected);
+        getBuildingData();
+    }, [selected]);
+
     return (
         <>
+            <div className="selection">
+                <label htmlFor="buildings" className='label'>Select Building: </label>
+                <select name="Buildings" id="buildings" className="buildings" onChange={changeBuilding}>
+                    {buildings.map((building) => {
+                        return <option key={building} value={building}>{"Building " + building.split('/')[1].slice(1).toUpperCase()}</option>
+                    })}
+                </select>
+            </div>
             {!data && <h1>Loading...</h1>}
             {data && (
                 <Line

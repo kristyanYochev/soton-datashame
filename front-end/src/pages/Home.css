@@ -12,6 +12,7 @@
   grid-column-end: 4;
   grid-row-start: 3;
   grid-row-end: 4;
+  color: var(--white);
 }
 
 .hero > .title-section > .title {
