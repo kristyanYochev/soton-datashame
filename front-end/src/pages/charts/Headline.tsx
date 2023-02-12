@@ -34,7 +34,7 @@ const Headline: React.FC = () => {
 
     return (
         <>
-            {!headline && <h1>Loading...</h1>}
+            {!headline && <h1 style={{ textAlign: 'center' }}>Loading...</h1>}
             {headline && (
                 <div className="cols-2-md">
                     <div className="card">
