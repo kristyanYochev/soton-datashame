@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import '../styles/Charts.css'
+import './Charts.css'
  
 const Charts: React.FC = () => {
 
