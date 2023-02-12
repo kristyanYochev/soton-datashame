@@ -59,7 +59,7 @@ def query_data(bdg_code: str):
         cur.execute(str(q))
 
         data = list(cur)
-        return json.dumps(data[::23])
+        return json.dumps(data[::24])
 
 
 @app.route("/headline-stats")
