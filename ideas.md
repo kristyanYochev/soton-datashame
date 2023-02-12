@@ -93,4 +93,43 @@ Fairly self explanatory. The start time of the data to fetch. This is in epoch t
 
 Can compare against the wind and solar data for the UK for the same time period.
 
-Next, FT analysis
+## TODO
+
+API requests
+
+## Look at stuff
+
+* How much the university used in the last year
+* How much that compares with the previous year
+* Query by year/month/day(avg and total)
+* Query by building for day, month, year(avg, total, min, max)
+
+## Stuff that could be done
+Could integrate with the national grid API to estimate the universities carbon footprint, and how it has changed over time.
+Could be used to influence room booking decisions
+
+## Infomercial
+
+Sure, here's an example of a terrible informercial for the data visualization tool called "Sustineri":
+
+[Scene opens with a person walking into a university campus and looking at the energy meter on the wall]
+
+Person: "Wow, this university uses a lot of energy! But how do I know if it's sustainable or not?"
+
+[Cut to a close-up of a computer screen showing the Sustineri tool]
+
+Narrator: "Introducing Sustineri, the revolutionary data visualization tool that helps universities track and visualize their energy usage!"
+
+[Cut to the person using the Sustineri tool and seeing the energy consumption of the campus]
+
+Person: "Whoa, this is eye-opening! With Sustineri, I can see exactly where the energy is being used and how much is being wasted!"
+
+[Cut to a shot of the university's Vice President (VP) in a meeting with faculty and staff]
+
+VP: "We need to invest in sustainable energy to reduce our carbon footprint and save money in the long run."
+
+Narrator: "Thanks to Sustineri, the VP was shamed into investing in sustainable energy. With Sustineri, you too can help your university make the switch to a greener future!"
+
+[Scene closes with the Sustineri logo and tagline: "Visualize your energy. Change the future."]
+
+Note: Please note that "shaming" the VP into making a decision may not be the best approach, and it's important to present information in a professional and respectful manner.

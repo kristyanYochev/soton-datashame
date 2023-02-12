@@ -33,7 +33,15 @@ def print_data_for_date(start_date: datetime):
         print(f"\nDate: {parser.parse(item['from'])}")
         # Print the generation mix in descending order
         for fuel in sorted(item['generationmix'], key=lambda x: x['perc'], reverse=True):
-            print(f"{fuel['fuel']}: {fuel['perc']}%")
+            try:
+                print(f"{fuel['fuel']}: {fuel['perc']}%")
+            except KeyError:
+                print(f"Unknown: {fuel['perc']}%")
+
+            
+#Comverts the json file to a csv file            
+def data_to_csv(start_date: datetime,end_date:datetime):
+    pass
 
 
 def main():
