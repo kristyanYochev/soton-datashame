@@ -12,11 +12,5 @@ export default createBrowserRouter([
     {
         path: 'charts',
         element: <Charts />,
-        children: [
-            {
-                path: '',
-                element: <Headline />,
-            },
-        ],
     },
 ]);

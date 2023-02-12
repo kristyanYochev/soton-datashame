@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import './Charts.css';
+import Headline from './Headline';
 
 const Charts: React.FC = () => {
     return (
@@ -11,7 +12,7 @@ const Charts: React.FC = () => {
                     Home
                 </a>
             </div>
-            <Outlet />
+            <Headline />
         </div>
     );
 };
