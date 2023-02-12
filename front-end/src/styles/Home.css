@@ -1,0 +1,49 @@
+
+.hero {
+  background: var(--blue);
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.hero > .title-section {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.hero > .title-section > .title {
+  font-size: 5rem;
+}
+.hero > .title-section > .subtitle {
+  font-size: 2rem;
+}
+
+.hero > .display {
+ grid-column-start: 5;
+ grid-column-end: 7;
+ grid-row-start: 3;
+ grid-row-end: 4;
+ justify-self: center;
+ align-self: center;
+
+ font-size: 2.5rem;
+}
+
+.hero > .display > .view-charts {
+  text-decoration: none;
+  background: var(--white);
+  color: var(--blue);
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+
+  transition: all 0.5s ease-in-out 0s;
+}
+
+.hero > .display > .view-charts:hover {
+  padding: 20px 30px;
+  grid-column-end: 6;
+}
