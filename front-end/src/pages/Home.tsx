@@ -5,8 +5,8 @@ import './Home.css';
 const Home: React.FC = () => {
   return <div className="hero">
       <div className="title-section">
-        <h1 className="title">Soton Shame</h1>
-        <h2 className="subtitle">Your campus energy tracker</h2>
+        <h1 className="title">Watt A Shame</h1>
+        <h2 className="subtitle">Turning up the heat on energy waste.</h2>
       </div>
       <div className="display">
         <a href="/charts" className="view-charts">View Information</a>
