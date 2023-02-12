@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { callApi } from '../../api_call';
 
+import './Headline.css';
+
 type HeadlineData = {
     power_consumption_2019: number;
     power_consumption_2020: number;
@@ -21,6 +23,7 @@ const Headline: React.FC = () => {
         const init = async () => {
             const headlineData = await fetchHeadlineData();
             setHeadline(headlineData);
+            console.log('Load Headline');
         };
 
         init().catch(console.error);
@@ -28,6 +31,7 @@ const Headline: React.FC = () => {
 
     return (
         <>
+            {!headline && <h1>Loading...</h1>}
             {headline && (
                 <>
                     <div className="section section-1">

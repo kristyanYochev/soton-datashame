@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import './Charts.css';
 
 const Charts: React.FC = () => {
@@ -71,8 +72,10 @@ const Charts: React.FC = () => {
                     })}
                 </div>
             </div>
-            0
-            <div className="data">
+            <div className="wrapper">
+                <Outlet />
+            </div>
+            {/* <div className="data">
                 {select === 0 && headline !== null && (
                     <div className="wrapper"></div>
                 )}
@@ -101,7 +104,7 @@ const Charts: React.FC = () => {
                         })}
                     </div>
                 )}
-                {/* {select === -1 && (<div className="wrapper">
+                {select === -1 && (<div className="wrapper">
                             <LineChart width={800} height={600} data={convertBuildingData()}>
                               <CartesianGrid strokeDasharray="3 3" />
                               <XAxis dataKey="date"/>
@@ -110,8 +113,8 @@ const Charts: React.FC = () => {
                               <Legend/>
                               <Line type="monotone" dataKey="kwh" stroke="#8884d8" />
                             </LineChart>
-                      </div>)} */}
-            </div>
+                      </div>)}
+            </div> */}
         </div>
     );
 };

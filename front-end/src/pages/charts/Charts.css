@@ -1,16 +1,16 @@
-.charts > .header {
+.header {
   background: var(--blue);
   height: 100px;
 }
 
-.charts > .header > .title {
+.header .title {
   font-size: 4rem;
   margin-left: auto;
   text-align: center;
   
 }
 
-.charts > .header > .back {
+.header .back {
   right: 0;
   position: absolute;
   top: 35px;
@@ -23,14 +23,14 @@
   border: none;
 }
 
-.charts > .options { 
+.options { 
   height: 50px;
   width: 100%;
   display: flex;
   justify-content: space-around;
 }
 
-.charts > .options > .content > .btn {
+.options .content .btn {
   border-radius: 50px;
   border: none;
   padding: 10px 20px;
@@ -38,7 +38,7 @@
   background-color: var(--blue);
 }
 
-.charts > .options > .content > .btn-active {
+.options .content .btn-active {
   border-radius: 50px;
   border: none;
   padding: 10px 20px;
@@ -47,38 +47,38 @@
   color: var(--white);
 }
 
-.charts > .data > .wrapper{
+.data .wrapper{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   height: calc(100vh - 100px - 50px);
 }
-.charts > .data > .wrapper > .section {
+.data .wrapper .section {
   color: var(--black);
 }
-.charts > .data > .wrapper > .section > .title {
+.data .wrapper .section .title {
   text-align: center;
   font-weight: 500;
   margin-top: 30px;
   color: var(--black);
 }
 
-.charts > .data > .wrapper > .section > .subtitle {
+.data .wrapper .section .subtitle {
   text-align: center;
   margin-top: 30px;
   color: var(--black);
   font-size: 3rem;
 }
 
-.charts > .data > .wrapper > .section > .content {
+.data .wrapper .section .content {
   text-align: center;
   font-size: 4rem;
   font-weight: 600;
   margin-top: calc((100vh - 100px - 3rem) / 5);
 }
 
-.charts > .data > .wrapper > .section-3 > .content,
-.charts > .data > .wrapper > .section-4 > .content {
+.data .wrapper .section-3 .content,
+.data .wrapper .section-4 .content {
   text-align: center;
   font-size: 4rem;
   font-weight: 600;
